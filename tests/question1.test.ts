@@ -20,6 +20,7 @@ describe('isMatchBrackets', () => {
         expect(isMatchBrackets('abc')).toBe(false);
         expect(isMatchBrackets('-')).toBe(false);
         expect(isMatchBrackets('/')).toBe(false);
+        expect(isMatchBrackets(' ')).toBe(false);
     });
 
 });

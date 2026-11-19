@@ -14,7 +14,13 @@ describe('autocomplete', () => {
         
         expect(autocomplete("mO", ["monster", "monday", "moose", "mother", "mOment"], 3)).toEqual(["mOment", "monday", "monster"]);
         expect(autocomplete("SU", ["sunny", "sun", "sunset", "sunrise"], 4)).toEqual(["sun", "sunny", "sunrise", "sunset"]);
-        expect(autocomplete("SU", ["sunny", "sun", "sunset", "sunrise"], 0)).toEqual([]);
-        expect(autocomplete("SU", ["sunny", "sun", "sunset", "sunrise"], -2)).toEqual([]);
+    });
+
+    it('should throw an error for invalid inputs', () => {
+        expect(() => autocomplete("", ["Mother", "Think" , "Worthy", "Apple", "Android"], 2)).toThrow('Invalid input');
+        expect(() => autocomplete("th", [], 2)).toThrow('Invalid input');
+        expect(() => autocomplete("th", ["Mother", "Think" , "Worthy", "Apple", "Android"], -5)).toThrow('Invalid input');
+        expect(() => autocomplete("th", ["Mother", "Think" , "Worthy", "Apple", "Android"], 0)).toThrow('Invalid input');
+        expect(() => autocomplete("th", ["Mother", "Think" , "Worthy", "Apple", "Android"], null as any)).toThrow('Invalid input');
     });
 });
